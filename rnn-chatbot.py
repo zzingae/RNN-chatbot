@@ -3,7 +3,7 @@ import torch.nn as nn
 import numpy as np
 
 input_size=100
-hidden_size=200
+hidden_size=100
 num_layers=2
 x_len=5
 y_len=6
@@ -24,7 +24,7 @@ rnn = nn.RNN(input_size, hidden_size, num_layers)
 proj = nn.Linear(hidden_size, vocab_size)
 proj.weight.data.copy_(embeddings_matrix)
 proj.weight.requires_grad=False
-sm = nn.softmax(dim=2)
+sm = nn.Softmax(dim=2)
 
 xs = torch.randint(low=0,high=10,size=(x_len,batch))
 ys = torch.randint(low=0,high=10,size=(y_len,batch))
